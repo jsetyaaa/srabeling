@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200, initial-scale=1.0" />
+    <title>Srabeling Apps</title>
+    <link rel="icon" href="/static/logo.png" type="image/x-icon" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menambahkan smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+      </style>
+      <style>
+        /* Styling untuk tombol Back to Top */
+        #backToTop {
+            display: none; /* Sembunyikan tombol secara default */
+            position: fixed; /* Tetap di kanan bawah */
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000; /* Pastikan tombol berada di atas elemen lain */
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Menambahkan efek hover untuk memperbesar sedikit tombol saat diarahkan */
+    #backToTop:hover {
+        transform: scale(1.1);
+    }
+    </style>
+    
+  </head>
+  <body>
+    <nav class="flex justify-between items-center px-20 py-6">
+      <a href="/">
+        <div class="flex items-center">
+          <img src="/static/logo.png" alt="Logos" width="50em" />
+          <h2 class="font-bold text-2xl">SRABELING APPS</h2>
+        </div>
+      </a>
+      <div class="flex gap-12">
+        <a href="#about" class="font-bold text-xl">About</a>
+        <a href="#how" class="font-bold text-xl">How to Use?</a>
+      </div>
+    </nav>
+    <main class="py-8">
+        <section id="start">
+      <div class="flex justify-between py-4 px-20">
+        <div class="flex flex-col items-center gap-8 w-1/2">
+          <h1 class="font-bold text-center text-4xl">
+            Welcome to <span class="text-blue-600">Srabeling Apps!</span>
+          </h1>
+          <img src="/static/ilustrasi.jpeg" alt="ilustrasi" width="500em">
+        </div>
+        <div class="flex flex-col justify-center items gap-16 p-8 border-2 border-black rounded-xl w-1/2">
+            <h1 class="font-bold text-2xl">"Transform Comments into Knowledge: Scrape the Google Play Store for Your Research!"</h1>
+          <form action="/scrape" method="POST" class="flex flex-col gap-4">
+            <label for="app_id" class="font-bold">Application ID (example: com.shopeepay.id):</label>
+            <input type="text" id="app_id" name="app_id" required class="w-96 p-2 rounded-xl border-2 border-black"/>
+            <label for="limit" class="font-bold">Number of comments to scrape:</label>
+            <input type="number" id="limit" name="limit" min="1" required class="w-20 p-2 rounded-xl border-2 border-black"/>
+
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 font-bold w-40 mx-auto rounded-xl mt-12">Scrape</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+        <div class="py-12">
+            <h1 class="font-bold text-4xl text-center">About <span class="text-blue-600">Srabeling Apps</span></h1>
+            <div class="px-20 py-8 flex flex-col gap-8">
+              <p class="text-justify text-xl"><span class="text-2xl text-blue-600 font-bold">Srabeling Apps</span> is a web application built using Flask, specifically designed to assist researchers in extracting data from the Google Play Store. By leveraging the Google Play Scraper library, this application allows users to easily gather the necessary information from various apps available on the platform. <span class="text-2xl text-blue-600 font-bold">Srabeling Apps</span> provides convenience and efficiency for researchers who need to access app data for further analysis, making it a highly valuable tool for mobile application research.</p>
+              <p class="text-justify text-xl">In addition to the data extraction feature, <span class="text-2xl text-blue-600 font-bold">Srabeling Apps</span> also offers an advanced sentiment classification capability. Using a model built with the Support Vector Machine (SVM) algorithm, this application can categorize user reviews into two classes: positive and negative. The model has been tested and achieved an accuracy of 81%, ensuring reliability in sentiment analysis. The combination of data extraction and sentiment labeling makes <span class="text-2xl text-blue-600 font-bold">Srabeling Apps</span> a comprehensive solution for researchers who want to explore and gain deeper insights into the dynamics of apps on the Google Play Store.</p>              
+        </div>
+        </div>
+    </section>
+    <section id="how">
+        <div class="py-4"></div>
+        <h1 class="font-bold text-4xl text-center">How to Use <span class="text-blue-600">Srabeling Apps</span></h1>
+        <div class="px-20 py-8 flex flex-col gap-8">
+            <p class="text-justify text-xl">Using <span class="text-2xl text-blue-600 font-bold">Srabeling Apps</span> is simple and straightforward! Just follow these easy steps:</p>
+            <ol class="list-decimal list-inside text-justify text-xl">
+                <li>Start by entering the Application ID of the app you wish to scrape in the provided input field. This ID can typically be found in the URL of the app page on the Google Play Store. You can see an example below:</li>
+                <img src="/static/example.png" alt="example" class="mt-4 mb-4 mx-auto">
+                <li>Specify the number of comments you want to scrape by entering a value in the limit field. The application will collect the specified number of comments.</li>
+                <li>Click the "Scrape" button to initiate the data scraping process. Wait a moment while the application gathers the data for you.</li>
+                <li>Once the scraping is complete, you will be redirected to a new page displaying the results:</li>
+                <ul class="list-disc list-inside text-justify text-xl">
+                    <li>You will have the option to download the scraped data directly by clicking on the "Download Hasil Scraping" button.</li>
+                    <li>If you wish, you can also classify the comments using the SVM model by clicking the "Klasifikasikan dengan SVM" button. This will categorize the comments into positive and negative.</li>
+                    <li>After classification, you can download the classified results by clicking the "Download Hasil Klasifikasi" button.</li>
+                </ul>
+                <li>Review the results to gain insights from the user feedback and use this information for your research or analysis.</li>
+            </ol>
+            <p class="text-justify text-xl">That's it! You’re now ready to make the most out of <span class="text-2xl text-blue-600 font-bold">Srabeling Apps</span> for your research.</p>
+        </div>
+    </section>
+    </main>
+
+    <footer class="bg-yellow-600 text-white px-32 py-12 -mb-12">
+      <div class="flex justify-between">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center">
+          <img src="/static/logo.png" alt="logo" width="50em">
+          <h3 class="font-bold text-2xl">Srabeling Apps</h3>
+        </div>
+          <p class="text-sm pl-2 font-semibold">&copy; 2024 Srabeling Apps. All Rights Reserved.</p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <a href="#about" class="hover:text-blue-400 text-lg font-bold">About</a>
+          <a href="#how" class="hover:text-blue-400 text-lg font-bold">How to Use</a>
+          <a href="/" class="hover:text-blue-400 text-lg font-bold">Home</a>
+        </div>
+      </div>
+    </footer>    
+
+    <!-- Tombol Back to Top -->
+    <button id="backToTop" class="fixed bottom-10 right-10 px-4 py-2 rounded-full hidden">
+      <img src="/static/backtotop.png" alt="backtotop" class="w-20">
+    </button>
+
+    <!-- JavaScript ditempatkan sebelum tag </body> -->
+    <script>
+        // Menampilkan tombol saat halaman digulir
+        window.onscroll = function() {
+            var backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopButton.style.display = "block"; // Tampilkan tombol
+            } else {
+                backToTopButton.style.display = "none"; // Sembunyikan tombol
+            }
+        };
+
+        // Kembali ke atas ketika tombol diklik
+        document.getElementById("backToTop").onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Animasi smooth scrolling ke atas
+        };
+    </script>
+  </body>
+</html>

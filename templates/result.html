@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1200, initial-scale=1.0" />
+    <title>Result Srabeling Apps</title>
+    <link rel="icon" href="/static/logo.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <nav class="flex justify-center items-center px-20 py-6">
+      <a href="/">
+        <div class="flex items-center">
+          <img src="/static/logo.png" alt="Logos" width="50em" />
+          <h2 class="font-bold text-2xl">SRABELING APPS</h2>
+        </div>
+      </a>
+    </nav>
+    <main class="flex-grow w-full px-60 flex flex-col items-center gap-12">
+      <h1 class="text-2xl text-center font-bold">
+        "Here are the results from scraping using
+        <span class="text-blue-600 font-bold">Srabeling Apps.</span> Please use
+        the data responsibly. Thank you for using
+        <span class="text-blue-600 font-bold">Srabeling Apps.</span>"
+      </h1>
+
+      <div class="w-full flex flex-col justify-center items-center gap-6">
+        <!-- Tombol download untuk hasil scraping awal -->
+        <div class="flex flex-col gap-6 items-center">
+          <a
+            href="{{ url_for('download', filename=file) }}"
+            class="bg-blue-600 text-white px-6 py-3 font-bold rounded-xl text-center w-full max-w-xs hover:bg-blue-500 transition duration-300"
+          >
+            Download Scraping Result
+          </a>
+          <p class="text-center font-semibold">
+            Click the button above if you want to download only the scraped
+            data.
+          </p>
+        </div>
+
+        {% if request.args.get('classified') == 'True' %}
+        <div class="flex flex-col gap-6 items-center">
+        <!-- Jika klasifikasi sudah dilakukan, tampilkan tombol download baru -->
+        <h2 class="font-semibold text-lg mt-8">Download Classification Result</h2>
+        <a
+          href="{{ url_for('download', filename='classified_comments.csv') }}"
+          class="bg-blue-600 text-white px-6 py-3 font-bold rounded-xl text-center w-full max-w-xs hover:bg-blue-500 transition duration-300"
+        >
+          Download Classification Result
+        </a>
+        <p class="text-center font-semibold">Click the button above if you want to download the results of classification.</p>
+    </div>
+        {% else %}
+        <div class="flex flex-col gap-6 items-center">
+          <!-- Jika belum, tampilkan tombol untuk melakukan klasifikasi -->
+          <form action="{{ url_for('classify', filename=file) }}" method="POST">
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-6 py-3 font-bold rounded-xl w-full max-w-xs hover:bg-blue-500 transition duration-300"
+            >
+              Classify with SVM Models
+            </button>
+          </form>
+          <p class="text-center font-semibold">Click the button above if you want to classify the comments.</p>
+        </div>
+        {% endif %}
+      </div>
+    </main>
+    <footer class="bg-yellow-600 text-white px-32 py-12 mt-auto">
+      <div class="flex justify-center">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center justify-center">
+            <img src="/static/logo.png" alt="logo" width="50em" />
+            <h3 class="font-bold text-2xl">Srabeling Apps</h3>
+          </div>
+          <p class="text-sm font-semibold">
+            &copy; 2024 Srabeling Apps. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
