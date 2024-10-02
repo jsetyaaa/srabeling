@@ -6,6 +6,11 @@
       "use": "@vercel/python"
     }
   ],
+  "functions": {
+    "api/**/*.py": {
+      "maxLambdaSize": "50mb"
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
